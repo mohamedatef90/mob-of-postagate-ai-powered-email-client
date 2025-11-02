@@ -234,7 +234,7 @@ const ChatViewMobile: React.FC = () => {
                                 <Button variant="ghost" size="icon"><i className="fa-solid fa-ellipsis-v w-5 h-5"></i></Button>
                             </div>
                         </header>
-                        <main className="flex-1 overflow-y-auto p-4">
+                        <main className="flex-1 overflow-y-auto px-4 pt-4 pb-[50px]">
                             <div className="space-y-4">
                                 {selectedConversation.messages.map((msg) => <ChatBubble key={msg.id} message={msg} />)}
                                 <div ref={chatEndRef} />

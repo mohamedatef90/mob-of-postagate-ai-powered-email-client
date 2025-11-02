@@ -1,5 +1,6 @@
 import React from 'react';
-// FIX: Standardize icon import to use capitalized 'Icons' to resolve file casing conflict.
+// Fix file casing issue by changing import from './Icons' to './Icons.tsx'
+// FIX: Changed import to not include file extension to resolve module casing issue.
 import { ArrowLeftIcon, ChevronRightIcon } from './Icons';
 import { IconButton } from './ui/IconButton';
 

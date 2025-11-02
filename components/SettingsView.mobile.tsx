@@ -2,7 +2,8 @@ import React, { useState, useContext, useRef, useEffect } from 'react';
 // Fix: `createPortal` is available on the `react-dom` package, not `react-dom/client`.
 import ReactDOM from 'react-dom';
 import { AppContext } from './context/AppContext';
-// FIX: Standardize icon import to use capitalized 'Icons' to resolve file casing conflict.
+// Fix file casing issue by changing import from './Icons' to './Icons.tsx'
+// FIX: Changed import to not include file extension to resolve module casing issue.
 import { ArrowLeftIcon, PlusIcon, ExchangeIcon, InboxArrowDownIcon, FolderOpenIcon, TrashIcon, CheckIcon, ChevronUpIcon, CheckVIcon, CheckThinIcon, ArrowDownTrayIcon, CalendarDaysIcon, UserIcon, MapPinIcon, CameraIcon, BellIcon, MusicalNoteIcon, InformationCircleIcon, SearchIcon, QuestionMarkCircleIcon, ChatBubbleLeftIcon, HeadphonesIcon, UsersIcon, PaperAirplaneIcon, PinIcon, ClockIcon, ArchiveBoxIcon, ArrowUturnLeftIcon, EllipsisVerticalIcon, MoveIcon, StarIcon, ExclamationTriangleIcon, EnvelopeXMarkIcon, BackspaceIcon, XMarkIcon, ChevronRightIcon } from './Icons';
 import { IconButton } from './ui/IconButton';
 import { OutOfOfficeModal } from './OutOfOfficeModal';

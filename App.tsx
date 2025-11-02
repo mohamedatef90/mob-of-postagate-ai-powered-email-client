@@ -934,9 +934,9 @@ const App: React.FC = () => {
               onArchive={handleArchiveThread}
               onDelete={handleDeleteThread}
           />
-        ) : (
+        ) : activeModule !== 'settings' ? (
           <MobileBottomNav activeModule={activeModule} onNavigate={handleNavigateModule} />
-        )}
+        ) : null}
       </div>
     </AppContext.Provider>
   );

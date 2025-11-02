@@ -29,7 +29,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
             case 1:
                 return <WelcomeStep onNext={nextStep} />;
             case 2:
-                return <SignInStep onNext={nextStep} onBack={prevStep} updateData={updateUserData} data={userData} />;
+                return <SignInStep onNext={nextStep} onBack={prevStep} updateData={updateUserData} data={userData} onComplete={onComplete} />;
             case 3:
                 return <PersonalizationStep onNext={nextStep} onBack={prevStep} updateData={updateUserData} data={userData} />;
             case 4:

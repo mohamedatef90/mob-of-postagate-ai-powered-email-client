@@ -7,9 +7,10 @@ interface SignInStepProps {
     onBack: () => void;
     updateData: (data: { email: string }) => void;
     data: { email: string };
+    onComplete: () => void;
 }
 
-const SignInStep: React.FC<SignInStepProps> = ({ onNext, onBack, updateData, data }) => {
+const SignInStep: React.FC<SignInStepProps> = ({ onNext, onBack, updateData, data, onComplete }) => {
     const [email, setEmail] = useState(data.email);
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -49,7 +50,7 @@ const SignInStep: React.FC<SignInStepProps> = ({ onNext, onBack, updateData, dat
                         <Button variant="secondary" size="icon" className="h-14 w-14 rounded-full backdrop-blur-xl bg-card/50"><i className="fa-brands fa-windows text-2xl"></i></Button>
                         <Button variant="secondary" size="icon" className="h-14 w-14 rounded-full backdrop-blur-xl bg-card/50"><i className="fa-solid fa-envelope text-2xl"></i></Button>
                     </div>
-                    <p className="text-center text-sm text-muted-foreground pt-4">I already have an account → <button className="text-primary hover:underline">Skip</button></p>
+                    <p className="text-center text-sm text-muted-foreground pt-4">I already have an account → <button onClick={onComplete} className="text-primary hover:underline">Skip</button></p>
 
                     <div className="pt-4">
                         <Button size="lg" onClick={handleNext} disabled={!isEmailValid} className="w-full rounded-full backdrop-blur-xl bg-primary/80 border border-white/20 shadow-lg">Next</Button>
