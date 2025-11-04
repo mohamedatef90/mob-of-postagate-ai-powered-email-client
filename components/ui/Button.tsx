@@ -7,9 +7,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'default' | 'sm' | 'lg' | 'icon';
 }
 
-// FIX: Convert the Button component to use React.forwardRef. This allows a ref to be passed
-// to the underlying <button> element, which is a common requirement for positioning popovers
-// or managing focus. The component was previously a standard functional component, which cannot receive refs.
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant = 'primary', size = 'default', ...props }, ref) => {
   const baseClasses = 'inline-flex items-center justify-center text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 

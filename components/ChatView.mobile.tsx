@@ -234,13 +234,13 @@ const ChatViewMobile: React.FC = () => {
                                 <Button variant="ghost" size="icon"><i className="fa-solid fa-ellipsis-v w-5 h-5"></i></Button>
                             </div>
                         </header>
-                        <main className="flex-1 overflow-y-auto px-4 pt-4 pb-[50px]">
+                        <main className="flex-1 overflow-y-auto px-4 pt-4 pb-16">
                             <div className="space-y-4">
                                 {selectedConversation.messages.map((msg) => <ChatBubble key={msg.id} message={msg} />)}
                                 <div ref={chatEndRef} />
                             </div>
                         </main>
-                        <footer className="p-4 border-t border-border bg-background">
+                        <footer className="px-4 pt-4 pb-24 border-t border-border bg-background">
                              <div className="flex items-end space-x-2 w-full bg-secondary border border-border rounded-xl p-2">
                                 <textarea
                                     placeholder={`Message ${selectedConversation.participant.name}...`}

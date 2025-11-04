@@ -384,7 +384,7 @@ const App: React.FC = () => {
       setIsComposerMaximized(prev => !prev);
   };
 
-  const handleSendEmail = (email: { to: string, subject: string, body: string, attachments: File[] }) => {
+  const handleSendEmail = (email: { to: string, cc: string, bcc: string, subject: string, body: string, attachments: File[] }) => {
       console.log("✅ Email Sent!", {
           ...email,
           attachments: email.attachments.map(f => f.name) // Log file names for brevity
@@ -899,7 +899,7 @@ const App: React.FC = () => {
           // Mobile view
           <div 
             onClick={toggleEmailSidebar}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-10 md:hidden"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
             aria-hidden="true"
           ></div>
         )}

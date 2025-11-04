@@ -5,18 +5,21 @@ import type { Thread } from '../types';
 interface ComposerMobileProps {
     onClose: () => void;
     initialState?: { to?: string; subject?: string; body?: string; } | null;
-    onSend: (email: { to: string, subject: string, body: string, attachments: File[] }) => void;
+    onSend: (email: { to: string, cc: string, bcc: string, subject: string, body: string, attachments: File[] }) => void;
 }
 
 const ComposerMobile: React.FC<ComposerMobileProps> = ({ onClose, initialState, onSend }) => {
     const [to, setTo] = useState('');
+    const [cc, setCc] = useState('');
+    const [bcc, setBcc] = useState('');
     const [subject, setSubject] = useState('');
     const [body, setBody] = useState('');
     const [attachments, setAttachments] = useState<File[]>([]);
     const [isConfirmCloseOpen, setIsConfirmCloseOpen] = useState(false);
+    const [isCcBccExpanded, setIsCcBccExpanded] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const hasContent = to || subject || body || attachments.length > 0;
+    const hasContent = to || cc || bcc || subject || body || attachments.length > 0;
     
     useEffect(() => {
         if (initialState) {
@@ -54,7 +57,7 @@ const ComposerMobile: React.FC<ComposerMobileProps> = ({ onClose, initialState, 
             alert("Please fill in the recipient and subject fields.");
             return;
         }
-        onSend({ to, subject, body, attachments });
+        onSend({ to, cc, bcc, subject, body, attachments });
     };
     
     const handleAttachClick = () => {
@@ -84,13 +87,49 @@ const ComposerMobile: React.FC<ComposerMobileProps> = ({ onClose, initialState, 
                     <Button variant="ghost" size="icon" onClick={handleAttachClick} className="h-10 w-10 text-muted-foreground">
                         <i className="fa-solid fa-paperclip w-5 h-5"></i>
                     </Button>
-                    <Button onClick={handleSend} disabled={!to.trim() || !subject.trim()}>Send</Button>
+                    <Button onClick={handleSend} disabled={!to.trim() && !subject.trim()} size="icon">
+                        <i className="fa-solid fa-paper-plane w-5 h-5"></i>
+                    </Button>
                 </div>
             </header>
             <div className="flex-1 flex flex-col overflow-y-auto p-4">
-                <div className="border-b border-border flex items-center">
-                    <span className="py-2 pr-2 text-sm text-muted-foreground">To</span>
-                    <input type="text" value={to} onChange={(e) => setTo(e.target.value)} placeholder="" className="w-full py-2 bg-transparent focus:outline-none text-sm text-foreground"/>
+                <div>
+                    <div className="border-b border-border flex items-center">
+                        <span className="py-2 pr-2 text-sm text-muted-foreground">To</span>
+                        <input 
+                            type="text" 
+                            value={to} 
+                            onChange={(e) => setTo(e.target.value)} 
+                            placeholder="" 
+                            className="w-full py-2 bg-transparent focus:outline-none text-sm text-foreground flex-1"
+                        />
+                        <Button variant="ghost" size="icon" onClick={() => setIsCcBccExpanded(prev => !prev)} className="h-10 w-10 text-muted-foreground">
+                            <i className={`fa-solid fa-chevron-down w-4 h-4 transition-transform duration-200 ${isCcBccExpanded ? 'rotate-180' : ''}`}></i>
+                        </Button>
+                    </div>
+                    
+                    <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isCcBccExpanded ? 'max-h-40' : 'max-h-0'}`}>
+                        <div className="border-b border-border flex items-center">
+                            <span className="py-2 pr-2 text-sm text-muted-foreground">Cc</span>
+                            <input 
+                                type="text" 
+                                value={cc} 
+                                onChange={(e) => setCc(e.target.value)} 
+                                placeholder="" 
+                                className="w-full py-2 bg-transparent focus:outline-none text-sm text-foreground"
+                            />
+                        </div>
+                        <div className="border-b border-border flex items-center">
+                            <span className="py-2 pr-2 text-sm text-muted-foreground">Bcc</span>
+                            <input 
+                                type="text" 
+                                value={bcc} 
+                                onChange={(e) => setBcc(e.target.value)} 
+                                placeholder="" 
+                                className="w-full py-2 bg-transparent focus:outline-none text-sm text-foreground"
+                            />
+                        </div>
+                    </div>
                 </div>
                 <div className="border-b border-border">
                     <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="Subject" className="w-full py-3 bg-transparent focus:outline-none text-sm text-foreground placeholder:text-muted-foreground"/>

@@ -117,7 +117,6 @@ const CopilotViewMobile: React.FC = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files && e.target.files.length > 0) {
-          // FIX: Explicitly type the 'f' parameter as 'File' to resolve the TypeScript error.
           const fileNames = Array.from(e.target.files).map((f: File) => f.name).join(', ');
           setInput(prev => `${prev} [Attached file(s): ${fileNames}]`);
       }
@@ -215,7 +214,7 @@ const CopilotViewMobile: React.FC = () => {
     <div className="flex h-full w-full bg-background relative overflow-hidden">
         {/* History Sidebar */}
         <aside className={cn(
-            "absolute top-0 left-0 h-full w-[300px] bg-card border-r border-border flex-shrink-0 flex flex-col z-20 transition-transform duration-300 ease-in-out",
+            "absolute top-0 left-0 h-full w-[300px] bg-card/80 backdrop-blur-xl border-r border-border flex-shrink-0 flex flex-col z-50 transition-transform duration-300 ease-in-out",
             isHistorySidebarOpen ? 'translate-x-0' : '-translate-x-full'
         )}>
             <div className="p-4 border-b border-border flex-shrink-0 flex items-center justify-between">
@@ -237,7 +236,7 @@ const CopilotViewMobile: React.FC = () => {
         {isHistorySidebarOpen && (
             <div 
                 onClick={() => setIsHistorySidebarOpen(false)}
-                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-10"
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
                 aria-hidden="true"
             ></div>
         )}

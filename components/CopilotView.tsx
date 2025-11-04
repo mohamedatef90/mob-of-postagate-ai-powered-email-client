@@ -108,7 +108,6 @@ const CopilotView: React.FC = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.files && e.target.files.length > 0) {
-          // FIX: Explicitly type the 'f' parameter as 'File' to resolve the TypeScript error.
           const fileNames = Array.from(e.target.files).map((f: File) => f.name).join(', ');
           setInput(prev => `${prev} [Attached file(s): ${fileNames}]`);
       }

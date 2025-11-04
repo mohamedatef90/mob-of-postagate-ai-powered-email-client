@@ -1,7 +1,6 @@
 import React from 'react';
-// Fix file casing issue by changing import from './Icons' to './Icons.tsx'
-// FIX: Changed import to not include file extension to resolve module casing issue.
-import { ArrowLeftIcon } from './Icons';
+// FIX: Resolved file casing ambiguity by using a consistent lowercase import path.
+import { ArrowLeftIcon } from './icons.tsx';
 import { IconButton } from './ui/IconButton';
 
 const mockFolders = [

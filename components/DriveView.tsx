@@ -158,9 +158,6 @@ const DriveView: React.FC = () => {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const uploadedFiles = event.target.files;
         if (uploadedFiles) {
-            // FIX: Explicitly type the 'file' parameter in the map function to 'File'
-            // to resolve TypeScript errors where properties like 'type', 'name', and 'size'
-            // were not recognized on the implicitly typed 'unknown' variable.
             const newDriveFiles: DriveFile[] = Array.from(uploadedFiles).map((file: File) => {
                 let type: DriveFile['type'] = 'document';
                 if (file.type.startsWith('image/')) type = 'image';
@@ -261,7 +258,7 @@ const DriveView: React.FC = () => {
             {/* Drive Sidebar */}
             {/* Mobile view */}
             <aside className={cn(
-                "w-[280px] bg-card border-r border-border flex-shrink-0 flex-col p-4 backdrop-blur-xl h-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 absolute z-20",
+                "w-[280px] bg-card border-r border-border flex-shrink-0 flex-col p-4 backdrop-blur-xl h-full transition-transform duration-300 ease-in-out md:relative md:translate-x-0 absolute z-50",
                 isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
             )}>
                 <div className="mb-6">
@@ -306,7 +303,7 @@ const DriveView: React.FC = () => {
             {isMobile && isSidebarOpen && (
                 <div 
                     onClick={() => setIsSidebarOpen(false)} 
-                    className="fixed inset-0 bg-black/50 z-10"
+                    className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
                     aria-hidden="true"
                 ></div>
             )}

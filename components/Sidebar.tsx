@@ -76,7 +76,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, activeView, activeDoma
     <aside 
       style={{ width: `${width}px` }}
       // Mobile view
-      className={`absolute md:relative z-20 h-full bg-background border-r border-border flex-shrink-0 transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 backdrop-blur-xl`}
+      className={`absolute md:relative z-50 h-full bg-background border-r border-border flex-shrink-0 transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 backdrop-blur-xl`}
     >
       <div className="flex flex-col h-full">
         <div className="p-4 flex-shrink-0">
