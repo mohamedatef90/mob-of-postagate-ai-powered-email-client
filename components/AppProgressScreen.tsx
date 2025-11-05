@@ -1,6 +1,6 @@
 import React from 'react';
-// FIX: Resolved file casing ambiguity by using a consistent PascalCase import path.
-import { ArrowLeftIcon } from './Icons.tsx';
+// FIX: Unify icon imports to use title-case 'Icons.tsx' to resolve casing conflicts.
+import { ArrowLeftIcon } from './Icons';
 import { IconButton } from './ui/IconButton';
 
 const progressItems = [

@@ -1,5 +1,6 @@
 import React from 'react';
-import type { Module } from '../App';
+// FIX: Changed import path for Module type to where it's actually exported.
+import type { Module } from './context/AppContext';
 
 interface PrimarySidebarProps {
   activeModule: string;
@@ -34,7 +35,7 @@ const PrimarySidebar: React.FC<PrimarySidebarProps> = ({ activeModule, onNavigat
     <nav className="h-full bg-background border-r border-border flex-col items-center justify-between p-2 flex-shrink-0 z-30 backdrop-blur-xl hidden md:flex">
       <div className="flex flex-col items-center space-y-3">
         <div className="w-12 h-12 flex items-center justify-center mb-4">
-            <img src="https://i.postimg.cc/d338gtnZ/Asset-2-4x.png" alt="PostaGate Logo" className="w-10  rounded-md" />
+            <img src="https://i.postimg.cc/59BYkdyG/Posta.png" alt="PostaGate Logo" className="w-10 rounded-lg" />
         </div>
 
         <NavButton

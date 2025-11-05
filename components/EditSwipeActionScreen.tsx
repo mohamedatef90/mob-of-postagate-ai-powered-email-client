@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// FIX: Resolved file casing ambiguity by using a consistent PascalCase import path.
-import { ArrowLeftIcon, ArchiveBoxIcon, TrashIcon, ClockIcon, ArrowUturnLeftIcon, EnvelopeOpenIcon, MoveIcon, StarIcon, ExclamationTriangleIcon } from './Icons.tsx';
+// FIX: Unify icon imports to use title-case 'Icons.tsx' to resolve casing conflicts.
+import { ArrowLeftIcon, ArchiveBoxIcon, TrashIcon, ClockIcon, ArrowUturnLeftIcon, EnvelopeOpenIcon, MoveIcon, StarIcon, ExclamationTriangleIcon } from './Icons';
 import { IconButton } from './ui/IconButton';
 import { SwipeActionItem } from './SwipeActionsScreen';
 

@@ -30,11 +30,10 @@ import UndoSnackbar from './components/ui/UndoSnackbar';
 import UndoSnackbarMobile from './components/ui/UndoSnackbar.mobile';
 import Onboarding from './components/onboarding/Onboarding';
 import AIAssistantModal from './components/AIAssistantModal';
-import { AppContext } from './components/context/AppContext';
+import { AppContext, Module } from './components/context/AppContext';
 
 
 type Theme = 'light' | 'dark' | 'system';
-export type Module = 'email' | 'copilot' | 'chat' | 'drive' | 'settings' | 'design-system';
 type Domain = 'hogwarts' | 'liverpool';
 
 export interface SearchFilters {
@@ -719,6 +718,8 @@ const App: React.FC = () => {
     setDarkModeOption: handleSetDarkModeOption,
     initialSettingsView,
     setInitialSettingsView,
+    setActiveModule: handleNavigateModule,
+    activeDomain,
   };
 
 

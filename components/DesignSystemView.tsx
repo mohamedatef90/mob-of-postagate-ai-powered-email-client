@@ -158,7 +158,7 @@ const DesignSystemView: React.FC = () => {
     return (
         <div className="h-full w-full flex bg-background">
             <nav className="w-64 border-r border-border p-6 h-full overflow-y-auto shrink-0 hidden lg:block">
-                <h2 className="font-bold text-lg mb-4">PostaGate DS</h2>
+                <h2 className="font-bold text-lg mb-4">Posta DS</h2>
                 <ul className="space-y-2">
                     {sections.map(section => (
                         <li key={section.id}>
@@ -169,7 +169,7 @@ const DesignSystemView: React.FC = () => {
             </nav>
             <main className="flex-1 h-full overflow-y-auto p-6 md:p-10">
                 <SectionHeader 
-                    title="PostaGate Design System"
+                    title="Posta Design System"
                     description="A unified framework for creating consistent, accessible, and high-quality user experiences across all platforms."
                 />
 

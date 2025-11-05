@@ -1,6 +1,6 @@
 import React from 'react';
-// FIX: Resolved file casing ambiguity by using a consistent PascalCase import path.
-import { ArrowLeftIcon, ChevronRightIcon } from './Icons.tsx';
+// FIX: Unify icon imports to use title-case 'Icons.tsx' to resolve casing conflicts.
+import { ArrowLeftIcon, ChevronRightIcon } from './Icons';
 import { IconButton } from './ui/IconButton';
 
 export interface SwipeActionItem { id: string; name: string; }

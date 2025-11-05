@@ -1,5 +1,8 @@
 import React, { createContext } from 'react';
 
+// Re-define Module type here to avoid circular dependency with App.tsx
+export type Module = 'email' | 'copilot' | 'chat' | 'drive' | 'settings' | 'design-system';
+
 export interface Account {
     name: string;
     email: string;
@@ -12,6 +15,8 @@ interface AppContextType {
     setDarkModeOption: (option: string) => void;
     initialSettingsView: string | null;
     setInitialSettingsView: (view: string | null) => void;
+    setActiveModule: (module: Module) => void;
+    activeDomain: 'hogwarts' | 'liverpool';
 }
 
 export const AppContext = createContext<AppContextType>({
@@ -20,4 +25,6 @@ export const AppContext = createContext<AppContextType>({
     setDarkModeOption: () => {},
     initialSettingsView: null,
     setInitialSettingsView: () => {},
+    setActiveModule: () => {},
+    activeDomain: 'hogwarts',
 });

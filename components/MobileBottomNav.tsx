@@ -1,5 +1,6 @@
 import React from 'react';
-import type { Module } from '../App';
+// FIX: Changed import path for Module type to where it's actually exported.
+import type { Module } from './context/AppContext';
 
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ');
 

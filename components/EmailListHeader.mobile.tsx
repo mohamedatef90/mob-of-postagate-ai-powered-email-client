@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import type { User } from '../types';
 import { Button } from './ui/Button';
+// FIX: Corrected import path for AppContext
+import { AppContext } from './context/AppContext';
 
 interface EmailListHeaderMobileProps {
   isBulkMode: boolean;
@@ -29,6 +31,17 @@ const EmailListHeaderMobile: React.FC<EmailListHeaderMobileProps> = ({
   searchQuery,
   onSearchQueryChange
 }) => {
+  const { setActiveModule, setInitialSettingsView } = useContext(AppContext);
+
+  const handleAvatarClick = () => {
+    if (setInitialSettingsView) {
+      setInitialSettingsView('account');
+    }
+    if (setActiveModule) {
+      setActiveModule('settings');
+    }
+  };
+
   if (isBulkMode) {
     return (
       <div className="px-2 py-3 border-b border-border flex items-center justify-between flex-shrink-0 bg-background/80 backdrop-blur-lg animate-fadeInDown" style={{ animationDuration: '0.2s' }}>
@@ -59,10 +72,12 @@ const EmailListHeaderMobile: React.FC<EmailListHeaderMobileProps> = ({
                 placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => onSearchQueryChange(e.target.value)}
-                className="w-full bg-secondary border-none rounded-full pl-9 pr-4 h-10 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+                className="w-full bg-secondary border-none rounded-full pl-9 pr-4 h-10 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
             />
         </div>
-        <img src={currentUser.avatarUrl} alt={currentUser.name} className="w-8 h-8 rounded-full flex-shrink-0" />
+        <button onClick={handleAvatarClick} className="flex-shrink-0 rounded-full focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+          <img src={currentUser.avatarUrl} alt={currentUser.name} className="w-8 h-8 rounded-full" />
+        </button>
     </div>
   );
 };

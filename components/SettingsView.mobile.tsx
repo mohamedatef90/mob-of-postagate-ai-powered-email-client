@@ -1112,8 +1112,8 @@ const AccountSettingsScreen: React.FC<{
     onOpenOutOfOfficeModal, onEmptyRecycleBin, signature, onOpenSignatureModal,
     isSignatureEnabled, onToggleSignature, syncScheduleValue
 }) => {
-  const { accounts } = useContext(AppContext);
-  const currentAccount = accounts[0];
+  const { accounts, activeDomain } = useContext(AppContext);
+  const currentAccount = activeDomain === 'hogwarts' ? accounts[0] : accounts[1];
 
   const [syncEmails, setSyncEmails] = useState(true);
   const [syncCalendars, setSyncCalendars] = useState(false);
@@ -2414,8 +2414,8 @@ const SearchResultItem: React.FC<{ item: SearchableSetting }> = ({ item }) => {
 };
 
 export const SettingsViewMobile: React.FC<SettingsViewMobileProps> = ({ isOpen, onClose }) => {
-  const { accounts, darkModeOption, setDarkModeOption, initialSettingsView, setInitialSettingsView } = useContext(AppContext);
-  const currentAccount = accounts[0];
+  const { accounts, darkModeOption, setDarkModeOption, initialSettingsView, setInitialSettingsView, activeDomain } = useContext(AppContext);
+  const currentAccount = activeDomain === 'hogwarts' ? accounts[0] : accounts[1];
   const [view, setView] = useState<keyof typeof views>('main');
   const [emailSyncPeriod, setEmailSyncPeriod] = useState('1 month');
   const [retrievalSize, setRetrievalSize] = useState('No limit');
