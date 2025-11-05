@@ -2,7 +2,7 @@ import React, { useState, useContext, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { AppContext } from './context/AppContext';
 // FIX: Resolved file casing ambiguity by using a consistent PascalCase import path.
-import { ArrowLeftIcon, PlusIcon, ExchangeIcon, InboxArrowDownIcon, FolderOpenIcon, TrashIcon, CheckIcon, ChevronUpIcon, CheckVIcon, CheckThinIcon, ArrowDownTrayIcon, CalendarDaysIcon, UserIcon, MapPinIcon, CameraIcon, BellIcon, MusicalNoteIcon, InformationCircleIcon, SearchIcon, QuestionMarkCircleIcon, ChatBubbleLeftIcon, HeadphonesIcon, UsersIcon, PaperAirplaneIcon, PinIcon, ClockIcon, ArchiveBoxIcon, ArrowUturnLeftIcon, EllipsisVerticalIcon, MoveIcon, StarIcon, ExclamationTriangleIcon, EnvelopeXMarkIcon, BackspaceIcon, XMarkIcon, ChevronRightIcon } from './Icons.tsx';
+import { ArrowLeftIcon, PlusIcon, ExchangeIcon, InboxArrowDownIcon, FolderOpenIcon, TrashIcon, CheckIcon, ChevronUpIcon, CheckVIcon, CheckThinIcon, ArrowDownTrayIcon, CalendarDaysIcon, UserIcon, MapPinIcon, CameraIcon, BellIcon, MusicalNoteIcon, InformationCircleIcon, SearchIcon, QuestionMarkCircleIcon, ChatBubbleLeftIcon, HeadphonesIcon, UsersIcon, PaperAirplaneIcon, PinIcon, ClockIcon, ArchiveBoxIcon, ArrowUturnLeftIcon, EllipsisVerticalIcon, MoveIcon, StarIcon, ExclamationTriangleIcon, EnvelopeXMarkIcon, BackspaceIcon, XMarkIcon, ChevronRightIcon } from './Icons';
 import { IconButton } from './ui/IconButton';
 import { OutOfOfficeModal } from './OutOfOfficeModal';
 import { AddAccountScreen } from './AddAccountScreen';
@@ -455,15 +455,15 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ checked, onChange, label, d
       onClick={handleToggle}
       disabled={disabled}
       className={`${
-        checked ? 'bg-primary' : 'bg-gray-300 dark:bg-zinc-600'
-      } relative inline-flex h-8 w-[52px] flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
+        checked ? 'bg-primary' : 'bg-secondary'
+      } relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
         disabled ? 'opacity-50 cursor-not-allowed' : ''
       }`}
     >
       <span
         className={`${
-          checked ? 'translate-x-[20px]' : 'translate-x-0'
-        } pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out`}
+          checked ? 'translate-x-4' : 'translate-x-0'
+        } pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out`}
       />
     </button>
   );
@@ -697,7 +697,7 @@ const SYNC_SCHEDULE_OPTIONS = [
 // --- Sync Schedule Screen Component ---
 const SyncScheduleScreen: React.FC<{
     onBack: () => void;
-    onNavigate: (view: keyof typeof views) => void;
+    onNavigate: (view: string) => void;
     syncScheduleValue: string;
 }> = ({ onBack, onNavigate, syncScheduleValue }) => {
     const [peakSchedule, setPeakSchedule] = useState(false);
@@ -2652,7 +2652,7 @@ export const SettingsViewMobile: React.FC<SettingsViewMobileProps> = ({ isOpen, 
         case 'syncSchedule':
             return <SyncScheduleScreen
                 onBack={() => setView('account')}
-                onNavigate={setView}
+                onNavigate={(v) => setView(v as keyof typeof views)}
                 syncScheduleValue={syncScheduleValue}
             />;
         case 'setSyncSchedule':
@@ -2690,7 +2690,7 @@ export const SettingsViewMobile: React.FC<SettingsViewMobileProps> = ({ isOpen, 
         case 'permissions':
             return <PermissionsScreen onBack={() => setView('main')} />;
         case 'security':
-            return <SecurityScreen onBack={() => setView('main')} onNavigate={setView} />;
+            return <SecurityScreen onBack={() => setView('main')} onNavigate={(v) => setView(v as keyof typeof views)} />;
         case 'protectAppAccess':
             return <ProtectAppAccessScreen 
                         onBack={() => setView('security')} 
@@ -2698,7 +2698,7 @@ export const SettingsViewMobile: React.FC<SettingsViewMobileProps> = ({ isOpen, 
                         onToggleProtection={handleToggleProtection}
                     />;
         case 'aboutEmail':
-            return <AboutEmailScreen onBack={handleClose} onNavigate={setView} />;
+            return <AboutEmailScreen onBack={handleClose} onNavigate={(v) => setView(v as keyof typeof views)} />;
         case 'openSourceLicences':
             return <OpenSourceLicencesScreen onBack={() => setView('aboutEmail')} />;
         case 'contactUs':
